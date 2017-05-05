@@ -1,0 +1,10 @@
+{
+    "name": "relaxed/ean-search",
+    "description": "A PHP class for EAN and ISBN name lookup and validation using the API on ean-search.org",
+	"keywords": ["EAN","barcode","webservice","REST","UPC","ISBN13","ISBN"],
+	"homepage": "https://www.ean-search.org/ean-database-api.html",
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
+
