@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * A PHP class for EAN and ISBN name lookup and validation using the API on ean-search.org
+ *
+ * (c) Jan Willamowius, 2017
+ *     Relaxed Communications GmbH, 2017
+ *     https://www.ean-search.org/ean-database-api.html
+ *
+ */
+
 class EANSearch {
 	private $accessToken;
 
@@ -18,14 +27,14 @@ class EANSearch {
 		$xml = file_get_contents("https://api.ean-search.org/api?"
 			. "op=barcode-prefix-search&token=$this->accessToken&prefix=$prefix&page=$page");
 		$response = new SimpleXMLElement($xml);
-		return $response->product;
+		return $response->xpath('//product');
 	}
 
 	function productSearch($name, $page = 0) {
 		$xml = file_get_contents("https://api.ean-search.org/api?"
 			. "op=product-search&token=$this->accessToken&name=$name&page=$page");
 		$response = new SimpleXMLElement($xml);
-		return $response->product;
+		return $response->xpath('//product');
 	}
 
 	function barcodeImage($ean) {
