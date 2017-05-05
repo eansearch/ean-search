@@ -1,4 +1,8 @@
-# ean-search
+# relaxed/ean-search
+A PHP class for EAN and ISBN name lookup and validation using the API on ean-search.org.
+
+To use it, you need an API access token from
+https://www.ean-search.org/ean-database-api.html
 
 ## Initialization
 	// your access token from ean-search.org
