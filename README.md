@@ -5,12 +5,14 @@ To use it, you need an API access token from
 https://www.ean-search.org/ean-database-api.html
 
 ## Initialization
+```php
 	// your access token from ean-search.org
 	$accessToken = 'abcdef';
 
 	$eanSearch = new EANSearch($accessToken);
 
 ## Usage
+```php
 	$ean = '5099750442227';
 	$name = $eanSearch->barcodeLookup($ean);
 	echo "$ean is $name\n";
