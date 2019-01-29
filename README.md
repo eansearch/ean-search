@@ -10,6 +10,7 @@ https://www.ean-search.org/ean-database-api.html
 	$accessToken = 'abcdef';
 
 	$eanSearch = new EANSearch($accessToken);
+```
 
 ## Usage
 ```php
@@ -29,4 +30,5 @@ https://www.ean-search.org/ean-database-api.html
 	foreach ($eanList as $product) {
 		echo "$product->ean is $product->name\n";
 	}
+```
 
