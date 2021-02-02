@@ -6,6 +6,8 @@ https://www.ean-search.org/ean-database-api.html
 
 ## Initialization
 ```php
+include "EANSearch.php";
+
 // your access token from ean-search.org
 $accessToken = 'abcdef';
 
@@ -15,8 +17,12 @@ $eanSearch = new EANSearch($accessToken);
 ## Usage
 ```php
 $ean = '5099750442227';
-name = $eanSearch->barcodeLookup($ean);
+$name = $eanSearch->barcodeLookup($ean);
 echo "$ean is $name\n";
+
+// more detailed response, preferably in English
+$product = $eanSearch->barcodeSearch($ean, 1);
+echo "$ean is $product->name from category $product->categoryName issued in $product->issuingCountry\n";
 
 $ok = $eanSearch->verifyChecksum($ean);
 echo "$ean is " . ($ok ? 'valid' : 'invalid') . "\n";

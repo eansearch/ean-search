@@ -23,6 +23,13 @@ class EANSearch {
 		return $response->product->name;
 	}
 
+	function barcodeSearch($ean, $lang = 1) {
+		$xml = file_get_contents("https://api.ean-search.org/api?"
+			. "op=barcode-lookup&token=$this->accessToken&ean=$ean&language=$lang");
+		$response = new SimpleXMLElement($xml);
+		return $response->product;
+	}
+
 	function barcodePrefixSearch($prefix, $page = 0) {
 		$xml = file_get_contents("https://api.ean-search.org/api?"
 			. "op=barcode-prefix-search&token=$this->accessToken&prefix=$prefix&page=$page");
