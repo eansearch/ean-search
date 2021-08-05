@@ -27,7 +27,7 @@ echo "$ean is $product->name from category $product->categoryName issued in $pro
 $ok = $eanSearch->verifyChecksum($ean);
 echo "$ean is " . ($ok ? 'valid' : 'invalid') . "\n";
 
-$eanList = $eanSearch->productSearch('iPod');
+$eanList = $eanSearch->productSearch('Apple iPod');
 foreach ($eanList as $product) {
 	echo "$product->ean is $product->name\n";
 }
