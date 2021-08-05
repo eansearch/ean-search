@@ -16,7 +16,7 @@ class EANSearch {
 	function __construct($accessToken) {
 		$this->accessToken = $accessToken;
 		$ctx = stream_context_create(array('http' => array('timeout' => 180)));
-#		ini_set('default_socket_timeout', 180);
+		ini_set('default_socket_timeout', 180);
 	}
 
 	function barcodeLookup($ean, $lang = 1) {
