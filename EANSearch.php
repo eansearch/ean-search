@@ -15,7 +15,7 @@ class EANSearch {
 
 	function __construct($accessToken) {
 		$this->accessToken = $accessToken;
-		$ctx = stream_context_create(array('http' => array('timeout' => 180)));
+		$this->ctx = stream_context_create(array('http' => array('timeout' => 180)));
 		ini_set('default_socket_timeout', 180);
 	}
 
@@ -75,7 +75,7 @@ class EANSearch {
 	}
 
 	function setTimout($sec) {
-		$ctx = stream_context_create(array('http' => array('timeout' => $sec)));
+		$this->ctx = stream_context_create(array('http' => array('timeout' => $sec)));
 		ini_set('default_socket_timeout', $sec);
 	}
 
