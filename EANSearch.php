@@ -19,6 +19,7 @@ class EANSearch {
 		ini_set('default_socket_timeout', 180);
 	}
 
+	// only return the product name
 	function barcodeLookup($ean, $lang = 1) {
 		$xml = file_get_contents("https://api.ean-search.org/api?"
 			. "op=barcode-lookup&token=$this->accessToken&ean=$ean&language=$lang", false, $this->ctx);
@@ -29,6 +30,7 @@ class EANSearch {
 		return $response->product->name;
 	}
 
+	// return all product data
 	function barcodeSearch($ean, $lang = 1) {
 		$xml = file_get_contents("https://api.ean-search.org/api?"
 			. "op=barcode-lookup&token=$this->accessToken&ean=$ean&language=$lang", false, $this->ctx);
@@ -60,6 +62,17 @@ class EANSearch {
 		return $response->xpath('//product');
 	}
 
+	function categorySearch($category, $name = '', $page = 0) {
+		$name = urlencode($name);
+		$xml = file_get_contents("https://api.ean-search.org/api?"
+			. "op=category-search&token=$this->accessToken&category=$category&name=$name&page=$page", false, $this->ctx);
+		if ($xml === FALSE) {
+			return array();
+		}
+		$response = new SimpleXMLElement($xml);
+		return $response->xpath('//product');
+	}
+
 	function barcodeImage($ean) {
 		$xml = file_get_contents("https://api.ean-search.org/api?"
 			. "op=barcode-image&token=$this->accessToken&ean=$ean", false, $this->ctx);
@@ -72,6 +85,13 @@ class EANSearch {
 			. "op=verify-checksum&token=$this->accessToken&ean=$ean", false, $this->ctx);
 		$response = new SimpleXMLElement($xml);
 		return $response->product->valid;
+	}
+
+	function issuingCountryLookup($ean) {
+		$xml = file_get_contents("https://api.ean-search.org/api?"
+			. "op=issuing-country&token=$this->accessToken&ean=$ean", false, $this->ctx);
+		$response = new SimpleXMLElement($xml);
+		return $response->product->issuingCountry;
 	}
 
 	function setTimout($sec) {

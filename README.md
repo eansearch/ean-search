@@ -32,9 +32,23 @@ foreach ($eanList as $product) {
 	echo "$product->ean is $product->name\n";
 }
 
+$eanList = $eanSearch->categorySearch(45, 'Thriller');
+foreach ($eanList as $product) {
+	echo "$product->ean from Music category is $product->name\n";
+}
+
 $eanList = $eanSearch->barcodePrefixSearch(4007249146);
 foreach ($eanList as $product) {
 	echo "$product->ean is $product->name\n";
 }
+
+$ean = '5099750442227';
+$country = $eanSearch->issuingCountryLookup($ean);
+echo "$ean was issued in $country\n";
+
+//$ean = '5099750442227';
+//$barcode = $eanSearch->barcodeImage($ean);
+//header("Content-Type: image/png");
+// echo $barcode;
 ```
 
