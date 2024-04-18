@@ -41,6 +41,17 @@ class EANSearch {
 		return $response->product;
 	}
 
+	// only return the book name
+	function isbnLookup($isbn) {
+		$xml = file_get_contents("https://api.ean-search.org/api?"
+			. "op=barcode-lookup&token=$this->accessToken&isbn=$isbn", false, $this->ctx);
+		if ($xml === FALSE) {
+			return '';
+		}
+		$response = new SimpleXMLElement($xml);
+		return $response->product->name;
+	}
+
 	function barcodePrefixSearch($prefix, $page = 0) {
 		$xml = file_get_contents("https://api.ean-search.org/api?"
 			. "op=barcode-prefix-search&token=$this->accessToken&prefix=$prefix&page=$page", false, $this->ctx);
