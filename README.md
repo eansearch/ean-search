@@ -36,6 +36,11 @@ foreach ($eanList as $product) {
 	echo "$product->ean is $product->name\n";
 }
 
+$eanList = $eanSearch->similarProductSearch('Apple iPod with extra feature');
+foreach ($eanList as $product) {
+	echo "$product->ean is $product->name\n";
+}
+
 $eanList = $eanSearch->categorySearch(45, 'Thriller');
 foreach ($eanList as $product) {
 	echo "$product->ean from Music category is $product->name\n";
@@ -54,5 +59,9 @@ echo "$ean was issued in $country\n";
 //$barcode = $eanSearch->barcodeImage($ean);
 //header("Content-Type: image/png");
 // echo $barcode;
+
+$credits = $eanSearch->creditsRemaining();
+echo "$credits credits remaining\n";
+
 ```
 
