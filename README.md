@@ -56,7 +56,7 @@ $country = $eanSearch->issuingCountryLookup($ean);
 echo "$ean was issued in $country\n";
 
 //$ean = '5099750442227';
-//$barcode = $eanSearch->barcodeImage($ean);
+//$barcode = $eanSearch->barcodeImage($ean, 300, 200);
 //header("Content-Type: image/png");
 // echo $barcode;
 
