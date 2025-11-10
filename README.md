@@ -22,7 +22,7 @@ echo "$ean is $name\n";
 
 // more detailed response, preferably in English
 $product = $eanSearch->barcodeSearch($ean, 1);
-echo "$ean is $product->name from category $product->categoryName issued in $product->issuingCountry\n";
+echo "$ean is $product->name from category $product->categoryName (Google category $product->googleCategoryId) issued in $product->issuingCountry\n";
 
 $isbn = '1119578884';
 $title = $eanSearch->isbnLookup($isbn);
