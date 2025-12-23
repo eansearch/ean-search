@@ -9,7 +9,7 @@ https://www.ean-search.org/ean-database-api.html
 include "EANSearch.php";
 
 // your access token from ean-search.org
-$accessToken = 'abcdef';
+$accessToken = getenv("EAN_SEARCH_API_TOKEN");
 
 $eanSearch = new EANSearch($accessToken);
 ```
