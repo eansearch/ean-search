@@ -18,7 +18,7 @@ class EANSearch {
 
 	public function __construct($accessToken) {
 		$this->accessToken = $accessToken;
-		$this->setTimout(180);
+		$this->setTimout(30);
 	}
 
 	/// look up one EAN / GTIN / UPC barcode
@@ -126,7 +126,7 @@ class EANSearch {
 
 	/// set HTTP timeout in seconds
 	public function setTimout($sec) {
-		$this->ctx = stream_context_create(array('http' => array('timeout' => 180, 'ignore_errors' => true)));
+		$this->ctx = stream_context_create(array('http' => array('timeout' => $sec, 'ignore_errors' => true, 'user_agent' => 'php-eansearch/1.0')));
 		ini_set('default_socket_timeout', $sec);
 	}
 
