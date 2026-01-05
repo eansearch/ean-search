@@ -55,10 +55,9 @@ $ean = '5099750442227';
 $country = $eanSearch->issuingCountryLookup($ean);
 echo "$ean was issued in $country\n";
 
-//$ean = '5099750442227';
-//$barcode = $eanSearch->barcodeImage($ean, 300, 200);
-//header("Content-Type: image/png");
-// echo $barcode;
+$ean = '5099750442227';
+$barcode = $eanSearch->barcodeImage($ean, 300, 200);
+echo "HTML: <img src=\"data:image/png;base64,$barcode\">";
 
 $credits = $eanSearch->creditsRemaining();
 echo "$credits credits remaining\n";
