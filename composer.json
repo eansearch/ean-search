@@ -1,7 +1,7 @@
 {
     "name": "relaxed/ean-search",
     "description": "A PHP class for EAN and ISBN name lookup and validation using the API on ean-search.org",
-	"keywords": ["EAN","barcode","webservice","REST","UPC","ISBN13","ISBN"],
+	"keywords": ["EAN","barcode","webservice","REST","UPC","GTIN","ISBN13","ISBN","ASIN","LCCN"],
 	"homepage": "https://www.ean-search.org/ean-database-api.html",
 	"license": "MIT",
     "require": {

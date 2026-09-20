@@ -6,7 +6,7 @@ https://www.ean-search.org/ean-database-api.html
 
 ## Initialization
 ```php
-include "EANSearch.php";
+require_once("EANSearch.php");
 
 // your access token from ean-search.org
 $accessToken = getenv("EAN_SEARCH_API_TOKEN");
@@ -52,13 +52,23 @@ foreach ($eanList as $product) {
 }
 
 $ean = '5099750442227';
+$asin = $eanSearch->findAsinForEan($ean);
+echo "EAN $ean has the Amazon ASIN $asin\n";
+$ean = $eanSearch->findEanForAsin($asin);
+echo "ASIN $asin is EAN $ean\n";
+
+$isbn13 = '9780815346333';
+$lccn = $eanSearch->findLccnForEan($isbn13);
+echo "iISBN-13 $isbn13 has the Library of Congress control number (LCCN) $lccn\n";
+$ean = $eanSearch->findEanForLccn($lccn); // there can be several EANs for one LCCN, you get the first one found
+echo "LCCN $lccn has EAN $ean\n";
+
+$ean = '5099750442227';
 $country = $eanSearch->issuingCountryLookup($ean);
 echo "$ean was issued in $country\n";
 
-//$ean = '5099750442227';
-//$barcode = $eanSearch->barcodeImage($ean, 300, 200);
-//header("Content-Type: image/png");
-// echo $barcode;
+$barcode = $eanSearch->barcodeImage($ean, 300, 200);
+print "Image for EAN $ean in HTML: <img src=\"data:image/png;base64," . base64_encode($barcode) . "\">\n";
 
 $credits = $eanSearch->creditsRemaining();
 echo "$credits credits remaining\n";
